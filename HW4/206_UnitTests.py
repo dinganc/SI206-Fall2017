@@ -5,8 +5,8 @@ import unittest
 # Homework 3 - Code
 
 ##COMMENT YOUR CODE WITH:
-# Section Day/Time: 
-# People you worked with: 
+# Section Day/Time: Section 2, WED 6-7
+# People you worked with: None
 
 ######### DO NOT CHANGE PROVIDED CODE #########
 ### Below is the same cards.py code you saw in lecture.
@@ -123,13 +123,52 @@ if __name__ == "__main__":
 ## Also OK to add comments!
 
 #########
+class CardTests(unittest.TestCase):
+	def test_cardrank(self):
+		c = Card(rank=12)
+		self.assertEqual(c.rank, "Queen")
+	def test_cardrank2(self):
+		c = Card(rank=1)
+		self.assertEqual(c.rank, "Ace")
+	def test_cardrank3(self):
+		c = Card(rank=3)
+		self.assertEqual(c.rank, 3)
+	def test_cardrank4(self):
+		c = Card(suit=1)
+		self.assertEqual(c.suit, "Clubs")
+	def test_cardrank5(self):
+		c = Card(suit=2)
+		self.assertEqual(c.suit, "Hearts")
+	def test_cardrank6(self):
+		c = Card(suit=2)
+		self.assertEqual(c.suit_names, ["Diamonds","Clubs","Hearts","Spades"])
+	def test_cardrank7(self):
+		c = Card(suit=2,rank=7)
+		self.assertEqual(c.__str__(), "7 of Hearts")
+	def test_cardrank8(self):
+		c = Deck()
+		self.assertEqual(len(c.cards), 52)
+	def test_cardrank9(self):
+		d = Deck()
+		c = Card()
+		self.assertEqual(type(c), type(d.pop_card()))
+	def test_cardrank10(self):
+		p = play_war_game()
+		self.assertEqual(len(p), 3)
+		self.assertEqual(type(p[0]), str)
 
+	def test_cardrank11(self):
+		c = Card(suit=3)
+		self.assertEqual(c.suit, "Spades")
+		# test if suit 3 is a spade
 
-
-
-
-
-
+	def test_cardrank12(self):
+		d = Deck()
+		beforepop=len(d.cards)
+		d.pop_card()
+		afterpop=len(d.cards)
+		self.assertEqual(beforepop-1, afterpop)
+		# test if poping a card will actually remove the card from the deck
 ##**##**##**##@##**##**##**## # DO NOT CHANGE OR DELETE THIS COMMENT LINE -- we use it for grading your file
 ###############################################
 
